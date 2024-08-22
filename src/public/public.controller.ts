@@ -21,7 +21,6 @@ export class PublicController {
   findOne(@Param('id') id: string) {
     return this.publicService.findOne(+id);
   }
-
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePublicDto: UpdatePublicDto) {
     return this.publicService.update(+id, updatePublicDto);
