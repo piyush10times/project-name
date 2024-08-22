@@ -16,7 +16,7 @@ import {
       const ctx = context.switchToHttp();
       const response: Response = ctx.getResponse<Response>();
       const request: Request = ctx.getRequest<Request>();
-      const allowedOrigins: string[] = ["http://localhost:5500"];
+      const allowedOrigins: string[] = ["http://localhost:5500","http://127.0.0.1:5500"];
       const url = request.originalUrl;
       const origin: string | undefined = request.headers.origin as string;
   
@@ -36,8 +36,8 @@ import {
   
       const fileName = 'CorsGuard.txt';
       const dir = './public/guard/';
-      if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true });
+      if (fs.existsSync(dir)) {
+        fs.rmSync(dir, { recursive: true });
       }
       await fs.promises.appendFile(dir + fileName, JSON.stringify(observeVar));
 //   console.log(observeVar);
