@@ -5,7 +5,7 @@ import { CorsInterceptor } from './corsInterceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.useGlobalGuards(new CorsGuard('dsf'));
+  // app.useGlobalGuards(new CorsGuard());
   // app.useGlobalInterceptors(new CorsInterceptor());
   // console.log("gfrueri");
   app.enableCors({

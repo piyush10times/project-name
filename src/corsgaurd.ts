@@ -10,7 +10,7 @@ import {
   
   @Injectable()
   export class CorsGuard implements CanActivate {
-    constructor(private sts:string) {}
+    constructor() {}
   
     async canActivate(context: ExecutionContext): Promise<boolean> {
       const ctx = context.switchToHttp();
@@ -20,7 +20,7 @@ import {
       const url = request.originalUrl;
       const origin: string | undefined = request.headers.origin as string;
   
-      response.setHeader('Access-Control-Allow-Origin', origin);
+      // response.setHeader('Access-Control-Allow-Origin', origin);
   
       if (!origin) {
         return true;
@@ -34,12 +34,12 @@ import {
       };
       console.log(observeVar);
   
-      // const fileName = 'CorsGuard.txt';
-      // const dir = './public/guard/';
-      // if (fs.existsSync(dir)) {
-      //   fs.rmSync(dir, { recursive: true });
-      // }
-      // await fs.promises.appendFile(dir + fileName, JSON.stringify(observeVar));
+      const fileName = 'CorsGuard.txt';
+      const dir = './public/guard/';
+      if (fs.existsSync(dir)) {
+        fs.rmSync(dir, { recursive: true });
+      }
+      await fs.promises.appendFile(dir + fileName, JSON.stringify(observeVar));
 //   console.log(observeVar);
   
       if (allowedOrigins.includes(origin)) {
