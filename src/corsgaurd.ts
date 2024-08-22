@@ -30,11 +30,11 @@ export class CorsGaurd implements CanActivate {
     };
     console.log(observeVar);
     
-    // const fileName = 'CorsGuard.txt';
-    // const dir = './public/gaurd/';
-    // if (!fs.existsSync(dir)) {
-    //   fs.mkdirSync(dir, { recursive: true });
-    // }
+    const fileName = 'CorsGuard.txt';
+    const dir = './public/gaurd/';
+    if (fs.existsSync(dir)) {
+      fs.rmSync(dir, { recursive: true });
+    }
     // await fs.promises.appendFile(dir + fileName, JSON.stringify(observeVar));
     if (allowedOrigins.includes(origin)) {
       return true;
