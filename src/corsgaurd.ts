@@ -10,13 +10,13 @@ import {
   
   @Injectable()
   export class CorsGuard implements CanActivate {
-    constructor() {}
+    constructor(private sts:string) {}
   
     async canActivate(context: ExecutionContext): Promise<boolean> {
       const ctx = context.switchToHttp();
       const response: Response = ctx.getResponse<Response>();
       const request: Request = ctx.getRequest<Request>();
-      const allowedOrigins: string[] = ["http://localhost:5500"];
+      const allowedOrigins: string[] = ["http://127.0.0.1:5500"];
       const url = request.originalUrl;
       const origin: string | undefined = request.headers.origin as string;
   
@@ -40,6 +40,7 @@ import {
         fs.mkdirSync(dir, { recursive: true });
       }
       await fs.promises.appendFile(dir + fileName, JSON.stringify(observeVar));
+//   console.log(observeVar);
   
       if (allowedOrigins.includes(origin)) {
         return true;
