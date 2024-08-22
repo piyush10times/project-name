@@ -12,6 +12,6 @@ import { RequestLoggingMiddleware } from './midle';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    // consumer.apply(RequestLoggingMiddleware).forRoutes('*');
+    consumer.apply(RequestLoggingMiddleware).forRoutes('*');
   }
 }
