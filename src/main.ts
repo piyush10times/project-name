@@ -1,11 +1,15 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { CorsGuard } from './corsgaurd';
 import { CorsInterceptor } from './corsInterceptor';
+import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
+import { CorsGaurd } from './corsgaurd';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  app.useGlobalGuards(new CorsGuard('dsf'));
+  const app = await NestFactory.create<NestFastifyApplication>(
+    AppModule,
+    new FastifyAdapter()
+  );
+  app.useGlobalGuards(new CorsGaurd());
   // app.useGlobalInterceptors(new CorsInterceptor());
   // console.log("gfrueri");
   app.enableCors({
