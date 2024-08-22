@@ -15,7 +15,7 @@ export class CorsGaurd implements CanActivate {
     const ctx = context.switchToHttp();
     const response: FastifyReply = ctx.getResponse();
     const request: FastifyRequest = ctx.getRequest();
-    const allowedOrigins: string[] = ["http://localhost:5500"];
+    const allowedOrigins: string[] = ["http://localhost:5500","http://127.0.0.1:5500"];
     const url = request.originalUrl;
     const origin: string | undefined = request.headers.origin;
     response.header('Access-Control-Allow-Origin', origin);
