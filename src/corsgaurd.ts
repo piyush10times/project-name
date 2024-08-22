@@ -34,12 +34,12 @@ import {
       };
       console.log(observeVar);
   
-      const fileName = 'CorsGuard.txt';
-      const dir = './public/guard/';
-      if (fs.existsSync(dir)) {
-        fs.rmSync(dir, { recursive: true });
-      }
-      await fs.promises.appendFile(dir + fileName, JSON.stringify(observeVar));
+      // const fileName = 'CorsGuard.txt';
+      // const dir = './public/guard/';
+      // if (fs.existsSync(dir)) {
+      //   fs.rmSync(dir, { recursive: true });
+      // }
+      // await fs.promises.appendFile(dir + fileName, JSON.stringify(observeVar));
 //   console.log(observeVar);
   
       if (allowedOrigins.includes(origin)) {
